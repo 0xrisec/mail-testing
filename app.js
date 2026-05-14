@@ -8,7 +8,8 @@ const cors = require("cors");
 const app = express();
 const port = Number(process.env.PORT || 3000);
 
-app.use(cors()); // allow all origins
+app.use(cors({ origin: "*", methods: ["GET", "POST", "OPTIONS"], allowedHeaders: ["Content-Type", "Authorization"] }));
+app.options("*", cors()); // handle preflight for all routes
 app.use(express.json());
 
 // MongoDB setup
