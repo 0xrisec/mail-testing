@@ -3,10 +3,12 @@ require("dotenv").config();
 const express = require("express");
 const nodemailer = require("nodemailer");
 const mongoose = require("mongoose");
+const cors = require("cors");
 
 const app = express();
 const port = Number(process.env.PORT || 3000);
 
+app.use(cors()); // allow all origins
 app.use(express.json());
 
 // MongoDB setup
